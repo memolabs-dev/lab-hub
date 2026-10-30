@@ -177,21 +177,6 @@
     }
   },
   {
-    "name": "agents_liminals",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/agents_liminals",
-    "description": "Agents Liminals: an AI-guided spiritual and psychological consultation platform. Next.js 15.",
-    "language": "TypeScript",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 25,
-    "notes": {
-      "fr": "Un compagnon IA pour la réflexion personnelle.",
-      "en": "An AI-guided companion for personal reflection."
-    }
-  },
-  {
     "name": "aperto",
     "status": "lab",
     "url": null,
@@ -232,21 +217,6 @@
     "visibility": "PUBLIC",
     "last_push_days": 17,
     "notes": {}
-  },
-  {
-    "name": "ctaio-radar",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/ctaio-radar",
-    "description": "Four-step agentic pipeline: real release notes to a publish-ready editorial brief for ctaio.dev. Built for the WTF Sr Agentic Engineer assessment.",
-    "language": "JavaScript",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 19,
-    "notes": {
-      "fr": "Un pipeline agentique qui lit, trie et publie les notes de release.",
-      "en": "An agentic pipeline that reads, ranks and publishes release notes."
-    }
   },
   {
     "name": "featurebase-feedback-analyzer",
@@ -321,21 +291,6 @@
     }
   },
   {
-    "name": "memo-cc",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/memo-cc",
-    "description": "Guillaume's Claude Code plugin: vault-enrich and new-project skills, plus personal-archivist and vault-librarian agents.",
-    "language": "Shell",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 14,
-    "notes": {
-      "fr": "Un plugin Claude Code maison : vault-enrich, new-project.",
-      "en": "A homegrown Claude Code plugin: vault-enrich, new-project."
-    }
-  },
-  {
     "name": "moon-family",
     "status": "lab",
     "url": null,
@@ -393,21 +348,6 @@
     "notes": {
       "fr": "Une IA open source qui appelle les entreprises pour vous.",
       "en": "Open-source AI that calls companies so you don't have to."
-    }
-  },
-  {
-    "name": "oss-miner",
-    "status": "lab",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/oss-miner",
-    "description": "Mine GitHub for contributable issues across watched repos, auto-vet them against a 5-gate method, and score on employer leverage, AI/MCP ecosystem, and personal use.",
-    "language": "JavaScript",
-    "lab_candidate": true,
-    "visibility": "PUBLIC",
-    "last_push_days": 25,
-    "notes": {
-      "fr": "Un mineur de issues GitHub contribuables.",
-      "en": "Mine GitHub for contributable issues."
     }
   },
   {
@@ -543,21 +483,6 @@
     "notes": {
       "fr": "Un node n8n pour Opn Payments : charges et remboursements.",
       "en": "An n8n node for Opn Payments: charges and refunds."
-    }
-  },
-  {
-    "name": "stasis",
-    "status": "beta",
-    "url": null,
-    "repo": "https://github.com/guillaume-flambard/stasis",
-    "description": "Multi-project scoring and sprint orchestrator: an anti-scatter meta-layer that scores your projects, tells you which one to commit to, and holds you to it. TypeScript CLI + desktop app.",
-    "language": "TypeScript",
-    "lab_candidate": false,
-    "visibility": "PUBLIC",
-    "last_push_days": 17,
-    "notes": {
-      "fr": "Un orchestrateur de sprints anti-éparpillement.",
-      "en": "An anti-scatter sprint orchestrator."
     }
   }
 ]
