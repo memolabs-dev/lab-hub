@@ -15,11 +15,19 @@ export interface Dict {
   title: string;
   metaDesc: string;
   ogLocale: string;
-  // nav
+  // nav, mirrored from the portfolio's SiteNav (home.nav in its messages)
+  navHome: string;
   navWork: string;
+  navDemos: string;
   navLab: string;
   navAbout: string;
+  navCv: string;
   navContact: string;
+  navCta: string;
+  navMenu: string;
+  navSkip: string;
+  navAria: string;
+  navLang: string;
   // hero
   eyebrow: string;
   h1: string;
@@ -28,6 +36,7 @@ export interface Dict {
   btnLive: string;
   btnLab: string;
   // footer
+  footer: string;
   legal: string;
   // sections
   liveTitle: string;
@@ -49,10 +58,18 @@ const fr: Dict = {
   metaDesc:
     "Memo Labs, le lab. Tous les projets : produits en ligne, prototypes et expérimentations WIP, avec descriptions.",
   ogLocale: "fr_FR",
+  navHome: "Accueil",
   navWork: "Travail",
+  navDemos: "Démos",
   navLab: "Lab",
   navAbout: "À propos",
+  navCv: "CV",
   navContact: "Contact",
+  navCta: "Me contacter",
+  navMenu: "Menu",
+  navSkip: "Aller au contenu",
+  navAria: "Navigation principale",
+  navLang: "Langue",
   eyebrow: "Memo Labs · Le lab",
   h1: "Un terrain",
   h1accent: "de jeu.",
@@ -60,6 +77,7 @@ const fr: Dict = {
     "Le lab, c'est là où vivent les expérimentations de Memo Labs : prototypes d'agents IA, outils, scripts et POCs. Souvent bruts, parfois utiles, toujours réels. Les produits finis sont sur le {portfolioLink}.",
   btnLive: "En ligne",
   btnLab: "Le lab",
+  footer: "© 2026 Memo Labs · Guillaume Flambard EI",
   legal: "Mentions légales",
   liveTitle: "En ligne",
   liveLede: (n) => `Les produits Memo Labs déployés et accessibles, ${n} au total.`,
@@ -86,10 +104,18 @@ const en: Dict = {
   metaDesc:
     "Memo Labs, the lab. Every project: live products, prototypes and WIP experiments, with descriptions.",
   ogLocale: "en_US",
+  navHome: "Home",
   navWork: "Work",
+  navDemos: "Demos",
   navLab: "Lab",
   navAbout: "About",
+  navCv: "Resume",
   navContact: "Contact",
+  navCta: "Get in touch",
+  navMenu: "Menu",
+  navSkip: "Skip to content",
+  navAria: "Primary navigation",
+  navLang: "Language",
   eyebrow: "Memo Labs · The lab",
   h1: "A",
   h1accent: "playground.",
@@ -97,6 +123,7 @@ const en: Dict = {
     "The lab is where Memo Labs experiments live: AI agent prototypes, tools, scripts and POCs. Often rough, sometimes useful, always real. The finished products sit on the {portfolioLink}.",
   btnLive: "Live",
   btnLab: "The lab",
+  footer: "© 2026 Memo Labs · Guillaume Flambard EI",
   legal: "Legal notice",
   liveTitle: "Live",
   liveLede: (n) => `Memo Labs products deployed and reachable, ${n} in total.`,

@@ -26,12 +26,17 @@ body {
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
 a { color: inherit; }
+/* the portfolio runs Tailwind preflight; these are the bits of it the shared header relies on */
+.logo { text-decoration: none; color: inherit; }
+.nav .wrap { position: relative; }
 
 /* ── decorative backdrop (desktop only) ──────────────────────────────────── */
 .backdrop { display: none; position: fixed; inset: 0; z-index: -1; }
 @media (min-width: 922px) {
   .backdrop { display: block; }
   .backdrop svg { width: 100%; height: 100%; }
+  /* Text and cards sit on the page colour so the line art passes behind them, never through them. */
+  :where(h1, h2, h3, p, .eyebrow, .herobtns, .shead, .card) { background: var(--bg); }
 }
 .backdrop ellipse, .backdrop circle, .backdrop path { fill: none; stroke: var(--line); stroke-width: 1; }
 .backdrop .hot { stroke: var(--accent); opacity: 0.28; }
@@ -50,20 +55,71 @@ a { color: inherit; }
   100% { transform: translate(0, 0); }
 }
 
-/* ── nav (aligned with portfolio) ────────────────────────────────────────── */
+/* ── nav: copied verbatim from the portfolio (src/app/globals.css) so both sites share one header ── */
 .nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.brand { font-size: 17px; font-weight: 500; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; }
-.brand span { color: var(--accent); }
-.navright { display: flex; align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: 0.09em; }
-.navright a { text-decoration: none; color: var(--muted); padding: 0 18px; transition: color 0.2s; }
-.navright a + a { border-left: 1px solid var(--line); }
-.navright a:hover, .navright a.on { color: var(--accent); }
-.navright .lang { display: inline-flex; align-items: center; gap: 6px; padding-left: 18px;
-  border-left: 1px solid var(--line); color: var(--muted); font-size: 13px; }
-.navright .lang a { padding: 0; }
-@media (max-width: 640px) { .navright { font-size: 12px; gap: 4px; } .navright a { padding: 0 10px; }
-  .navright .lang { padding-left: 10px; } }
+.logo { display: flex; align-items: center; gap: 12px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.06em; font-size: 17px; }
+.logo .mark { width: 22px; height: 22px; border: 2px solid var(--ink); position: relative; flex: none; }
+.logo .mark::after { content: ""; position: absolute; inset: 4px; background: var(--accent); }
+.navlinks { display: flex; align-items: center; font-size: 15px; text-transform: uppercase; letter-spacing: 0.09em; }
+.navlinks a { text-decoration: none; color: var(--accent); padding: 0 22px; transition: color 0.2s; }
+.navlinks a + a { border-left: 1px solid var(--line); }
+.navlinks a:hover, .navlinks a.on { color: var(--ink); }
+.navright { display: flex; align-items: center; gap: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.09em; }
+.lang { color: var(--muted); }
+.lang a { text-decoration: none; color: inherit; transition: color 0.2s; }
+.lang a:hover { color: var(--accent); }
+.lang a.on { color: var(--ink); font-weight: 500; }
+.cta { background: var(--ink); color: var(--bg); text-decoration: none; padding: 11px 20px; white-space: nowrap;
+  font-weight: 400; font-size: 14px; transition: background 0.3s ease-in-out; }
+.cta:hover { background: var(--accent); }
+.mobile-menu { display: none; }
+.skip-link {
+  position: fixed; z-index: 100; top: 12px; left: 12px; padding: 10px 16px;
+  color: var(--bg); background: var(--ink); transform: translateY(-180%);
+  text-decoration: none; font-weight: 500; transition: transform .15s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+:where(a, button, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+#content { scroll-margin-top: 88px; }
+@media (max-width: 760px) {
+  .mobile-menu { display: block; }
+  .mobile-menu-trigger {
+    list-style: none; cursor: pointer; padding: 12px 4px;
+    text-transform: uppercase; color: var(--ink); font-size: 13px;
+    font-weight: 500; letter-spacing: .07em;
+  }
+  .mobile-menu-trigger::-webkit-details-marker { display: none; }
+  .mobile-menu-trigger::after { content: " +"; color: var(--accent); }
+  .mobile-menu[open] .mobile-menu-trigger::after { content: " −"; }
+  .mobile-menu-panel {
+    position: absolute; top: 100%; inset-inline: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    padding: 8px clamp(20px, 4vw, 48px) 24px; display: flex; flex-direction: column;
+  }
+  .mobile-menu-panel a {
+    padding: 12px 2px; border-bottom: 1px solid var(--line); text-decoration: none;
+    font-size: 16px; text-transform: uppercase; letter-spacing: .07em; color: var(--ink);
+  }
+  .mobile-menu-panel a[aria-current="page"] { color: var(--accent); font-weight: 500; }
+  .nav .wrap { gap: 12px; }
+}
+@media (max-width: 480px) {
+  .navright .cta { display: none; }
+}
+/* Six links fit at full spacing only above ~1000px; tighten them on tablets. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .navlinks { font-size: 13px; }
+  .navlinks a { padding: 0 10px; }
+}
+@media (max-width: 760px) {
+  .navlinks { display: none; }
+  .logo { font-size: 14px; gap: 9px; white-space: nowrap; }
+  .logo .mark { width: 18px; height: 18px; }
+  .navright { gap: 14px; font-size: 12px; }
+  .cta { padding: 9px 14px; font-size: 12px; }
+}
 
 /* ── hero ─────────────────────────────────────────────────────────────────── */
 .hero { position: relative; border-bottom: 1px solid var(--line); }
@@ -71,7 +127,7 @@ a { color: inherit; }
 .eyebrow { font-weight: 400; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--accent); display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
 .eyebrow .r { width: 42px; height: 1px; background: var(--accent); }
-h1.h { font-weight: 600; font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: 1.05; letter-spacing: 0;
+h1.h { font-weight: 600; font-size: clamp(2.8rem, 7.4vw, 6rem); line-height: 1.1; letter-spacing: 0;
   margin: 0; text-transform: uppercase; }
 h1.h .acc { color: var(--accent); }
 .lede { margin: clamp(26px, 4vw, 42px) 0 0; font-size: clamp(1.1rem, 1.8vw, 1.45rem); font-weight: 300;
@@ -128,10 +184,10 @@ h1.h .acc { color: var(--accent); }
 .b-lab { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
 .go { color: var(--accent); font-size: 14px; }
 
-/* ── footer ──────────────────────────────────────────────────────────────── */
-.foot { border-top: 1px solid var(--line); }
-.foot .wrap { display: flex; justify-content: space-between; align-items: center; padding: 36px 0;
-  font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+/* ── footer, same as the portfolio ─────────────────────────────────────── */
+.foot { padding: 32px 0; text-align: center; color: var(--muted); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.09em; border-top: 1px solid var(--line);
+  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
 .foot a { color: var(--muted); text-decoration: none; }
 .foot a:hover { color: var(--accent); }
 

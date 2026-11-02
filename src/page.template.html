@@ -52,15 +52,33 @@
       </svg>
     </div>
 
-    <nav class="nav">
+    <a class="skip-link" href="#content">{{navSkip}}</a>
+    <nav class="nav" aria-label="{{navAria}}">
       <div class="wrap">
-        <a class="brand" href="{{siteLocale}}">Memo <span>Labs</span></a>
-        <div class="navright">
+        <a class="logo" href="{{siteLocale}}" aria-label="{{navHome}}"><span class="mark" aria-hidden="true"></span>Memo Labs</a>
+        <div class="navlinks">
+          <a href="{{siteLocale}}">{{navHome}}</a>
           <a href="{{siteLocale}}/work">{{navWork}}</a>
-          <a class="on" href="{{labLocale}}/">{{navLab}}</a>
+          <a href="https://demos.memolabs.dev/">{{navDemos}}</a>
+          <a class="on" href="{{labLocale}}/" aria-current="page">{{navLab}}</a>
           <a href="{{siteLocale}}/about">{{navAbout}}</a>
           <a href="{{siteLocale}}/contact">{{navContact}}</a>
-          <span class="lang">{{langSwitch}}</span>
+        </div>
+        <details class="mobile-menu">
+          <summary class="mobile-menu-trigger">{{navMenu}}</summary>
+          <div class="mobile-menu-panel">
+            <a href="{{siteLocale}}">{{navHome}}</a>
+            <a href="{{siteLocale}}/work">{{navWork}}</a>
+            <a href="https://demos.memolabs.dev/">{{navDemos}}</a>
+            <a href="{{siteLocale}}/about">{{navAbout}}</a>
+            <a href="{{siteLocale}}/cv">{{navCv}}</a>
+            <a href="{{siteLocale}}/contact">{{navContact}}</a>
+            <a href="{{labLocale}}/" aria-current="page">{{navLab}}</a>
+          </div>
+        </details>
+        <div class="navright">
+          <span class="lang" aria-label="{{navLang}}">{{langSwitch}}</span>
+          <a class="cta" href="{{siteLocale}}/contact">{{navCta}}</a>
         </div>
       </div>
     </nav>
@@ -80,10 +98,8 @@
     <main id="content"></main>
 
     <footer class="foot">
-      <div class="wrap">
-        <span>© Memo Labs</span>
-        <a href="{{siteLocale}}/legal">{{legal}}</a>
-      </div>
+      <span>{{footer}}</span>
+      <a href="{{siteLocale}}/legal">{{legal}}</a>
     </footer>
 
     <script type="module" src="/src/main.ts"></script>
