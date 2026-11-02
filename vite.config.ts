@@ -18,7 +18,7 @@ function localeOf(path: string): Locale {
 
 function langSwitch(current: Locale): string {
   return LOCALES.map(
-    (l) => `<a href="/${l}/"${l === current ? ' class="on" aria-current="true"' : ""}>${l.toUpperCase()}</a>`
+    (l) => `<a href="/${l}/" lang="${l}"${l === current ? ' class="on" aria-current="page"' : ""}>${l.toUpperCase()}</a>`
   ).join(" / ");
 }
 
@@ -33,10 +33,19 @@ function values(locale: Locale): Record<string, string> {
     canonical: `${LAB}/${locale}/`,
     siteLocale: site,
     labLocale: `/${locale}`,
+    navHome: d.navHome,
     navWork: d.navWork,
+    navDemos: d.navDemos,
     navLab: d.navLab,
     navAbout: d.navAbout,
+    navCv: d.navCv,
     navContact: d.navContact,
+    navCta: d.navCta,
+    navMenu: d.navMenu,
+    navSkip: d.navSkip,
+    navAria: escapeAttr(d.navAria),
+    navLang: escapeAttr(d.navLang),
+    footer: d.footer,
     langSwitch: langSwitch(locale),
     eyebrow: d.eyebrow,
     h1: d.h1,
