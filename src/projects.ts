@@ -14,6 +14,7 @@ export interface Project {
   vault_note: string | null;
   lab_candidate: boolean;
   show_on_hub: boolean;
+  notes?: { fr: string; en: string };
 }
 
 export async function loadProjects(): Promise<Project[]> {
