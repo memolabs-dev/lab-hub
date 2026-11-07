@@ -25,8 +25,8 @@
     "visibility": "PUBLIC",
     "last_push_days": 22,
     "notes": {
-      "fr": "Score de compatibilité et moteur de portage d'apps iOS vers l'iPhone Fold.",
-      "en": "Fold-ready score and porting engine for iOS apps on the iPhone Fold."
+      "fr": "Projet iOS dont le site présente une offre de revue du code source et son périmètre.",
+      "en": "An iOS project whose website presents a source-code review service and its scope."
     }
   },
   {
@@ -48,7 +48,7 @@
     "name": "lab-hub",
     "status": "live",
     "url": "https://lab.memolabs.dev",
-    "repo": "https://github.com/guillaume-flambard/lab-hub",
+    "repo": "https://github.com/memolabs-dev/lab-hub",
     "description": "",
     "language": "TypeScript",
     "lab_candidate": false,
@@ -129,12 +129,15 @@
     "lab_candidate": false,
     "visibility": "PUBLIC",
     "last_push_days": 16,
-    "notes": {}
+    "notes": {
+      "fr": "Prototype pour analyser des opérations et préparer des pistes d’automatisation à revoir par une personne.",
+      "en": "Prototype for analysing operations and drafting automation opportunities for human review."
+    }
   },
   {
     "name": "weave",
-    "status": "live",
-    "url": "https://weave.memolabs.dev",
+    "status": "lab",
+    "url": null,
     "repo": "https://github.com/guillaume-flambard/weave",
     "description": "Cognitive Runtime (prototype MVP) — shared team memory that makes reusable skills emerge from activity, with per-layer provenance (perso→org). Rust, Postgres/pgvector, MCP.",
     "language": "Rust",
@@ -142,8 +145,8 @@
     "visibility": "PUBLIC",
     "last_push_days": 11,
     "notes": {
-      "fr": "Mémoire d'équipe partagée, prototype de runtime cognitif.",
-      "en": "Shared team memory, cognitive runtime prototype."
+      "fr": "Prototype de mémoire d’équipe ; code source consultable.",
+      "en": "Team-memory prototype with source code available."
     }
   },
   {
@@ -216,7 +219,10 @@
     "lab_candidate": true,
     "visibility": "PUBLIC",
     "last_push_days": 17,
-    "notes": {}
+    "notes": {
+      "fr": "Méthode de cadrage et de contrats pour les automatisations n8n.",
+      "en": "A scoping and contracts method for n8n automations."
+    }
   },
   {
     "name": "featurebase-feedback-analyzer",
@@ -273,7 +279,10 @@
     "lab_candidate": true,
     "visibility": "PUBLIC",
     "last_push_days": 0,
-    "notes": {}
+    "notes": {
+      "fr": "Prototype d’organisation personnelle avec données locales.",
+      "en": "A personal-organisation prototype with local data."
+    }
   },
   {
     "name": "mastra-feedback-agent",
@@ -427,17 +436,17 @@
   },
   {
     "name": "uni",
-    "status": "lab",
+    "status": "archived",
     "url": null,
     "repo": "https://github.com/guillaume-flambard/uni",
     "description": "UNI - Universal Neural Interface for Production-Grade LLM Systems",
     "language": "Python",
-    "lab_candidate": true,
+    "lab_candidate": false,
     "visibility": "PUBLIC",
     "last_push_days": 183,
     "notes": {
-      "fr": "Une interface neurale universelle pour des systèmes LLM en production.",
-      "en": "A universal neural interface for production LLM systems."
+      "fr": "Ancien prototype UNI, dépôt archivé. Le projet actuel est UNI Protocol, dans l’organisation Memo Labs.",
+      "en": "Older UNI prototype, archived repository. The current project is UNI Protocol in the Memo Labs organisation."
     }
   },
   {

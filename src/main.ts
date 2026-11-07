@@ -1,84 +1,35 @@
-import { t } from "./i18n";
+import { currentLocale, t } from "./i18n";
 import { loadProjects, type Project } from "./projects";
+import { CURATED, publicExplorations } from "./curation";
 import "./style.css";
 
-const TINTS = ["t1", "t2", "t3", "t4", "t5"];
-
-function tint(name: string): string {
-  const sum = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
-  return TINTS[sum % TINTS.length];
+function escape(value: string) {
+  return value.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
 }
-
-function badge(p: Project): string {
-  const d = t();
-  const label = d.status[p.status] ?? d.statusFallback;
-  const cls = p.status === "live" ? "b-live" : p.status === "beta" ? "b-beta" : "b-lab";
-  return `<span class="badge ${cls}">${label}</span>`;
+function exploration(project: Project): string {
+  const locale = currentLocale();
+  const description = project.notes?.[locale] || project.description || t().descFallback;
+  return `<li><h3>${escape(project.name)}</h3><p>${escape(description)}</p><a href="${escape(project.repo!)}" target="_blank" rel="noopener noreferrer">${t().sourceCta}</a></li>`;
 }
-
-function cleanDesc(p: Project): string {
-  // les descriptions viennent de projects.json (GitHub), elles ne sont pas traduites
-  return p.description && p.description !== "projet local (pas de repo GitHub)"
-    ? p.description
-    : t().descFallback;
-}
-
-function card(p: Project): string {
-  const desc = cleanDesc(p);
-  const href = p.url ?? p.repo ?? "#";
-  const langChip = p.language ? `<span class="chip">${p.language}</span>` : "";
-  const ext = p.url ? "↗" : "→";
-  return `
-  <a class="card" href="${href}" target="_blank" rel="noopener noreferrer">
-    <div class="thumb ${tint(p.name)}">${p.name}</div>
-    <div class="cbody">
-      <h3>${p.name}<span class="arrow">→</span></h3>
-      <p>${desc}</p>
-      <div class="stack">${langChip}</div>
-      <div class="foot-row">${badge(p)}<span class="go">${ext}</span></div>
-    </div>
-  </a>`;
-}
-
-function section(id: string, title: string, lede: string, projects: Project[]): string {
-  const cards = projects.map((p) => card(p)).join("");
-  return `
-  <section id="${id}" class="sec">
-    <div class="wrap">
-      <div class="shead">
-        <h2>${title}</h2>
-        <p>${lede}</p>
-      </div>
-      <div class="grid">${cards}</div>
-    </div>
-  </section>`;
-}
-
 async function main() {
   const root = document.getElementById("content");
   if (!root) return;
-
   const d = t();
-
+  const locale = currentLocale();
+  root.innerHTML = `<div class="wrap"><p role="status">${d.loading}</p></div>`;
   let projects: Project[];
   try {
     projects = await loadProjects();
-  } catch (e) {
-    root.innerHTML = `<div class="wrap"><p class="err">${d.loadError((e as Error).message)}</p></div>`;
+    if (!Array.isArray(projects)) throw new Error("Invalid public catalog");
+  } catch {
+    root.innerHTML = `<section class="sec"><div class="wrap"><p role="alert">${d.catalogUnavailable}</p><a class="btn p" href="https://memolabs.dev/${locale}/work">${d.professionalCta}</a></div></section>`;
     return;
   }
-
-    const live = projects.filter((p) => p.status === "live");
-  const lab = projects.filter((p) => p.lab_candidate);
-  const explorations = projects.filter(
-    (p) => (p.status === "beta" || p.status === "archived") && p.visibility === "PUBLIC" && p.description
-  ).slice(0, 12);
-
-  root.innerHTML =
-    section("live", d.liveTitle, d.liveLede(live.length), live) +
-    section("lab", d.labTitle, d.labLede(lab.length), lab) +
-    section("explorations", d.explTitle, d.explLede, explorations);
-
+  const publicProjects = publicExplorations(projects);
+  const selected = CURATED.filter(item => publicProjects.some(project => project.name === item.name));
+  const archive = publicProjects.filter(project => !selected.some(item => item.name === project.name));
+  const cards = selected.map(item => `<article class="card curated-card" data-project="${item.name}"><div class="cbody"><p class="project-context">${escape(item.context[locale])}</p><h3>${escape(item.title[locale])}</h3><p>${escape(item.description[locale])}</p><a href="${item.href}" target="_blank" rel="noopener noreferrer">${item.action === "package" ? d.packageCta : d.sourceCta}</a></div></article>`).join("");
+  root.innerHTML = `<section id="live" class="sec"><div class="wrap"><div class="shead"><h2>${d.selectionTitle}</h2><p>${d.selectionIntro}</p></div>${cards ? `<div class="grid curated-grid">${cards}</div>` : `<p>${d.selectionEmpty}</p>`}</div></section>
+    <section class="sec"><div class="wrap"><details id="lab" class="catalog-explorations"><summary>${d.allTitle(archive.length)}</summary><div id="explorations"><p>${d.allIntro}</p><ul class="exploration-list">${archive.map(exploration).join("")}</ul></div></details></div></section>`;
 }
-
 main();

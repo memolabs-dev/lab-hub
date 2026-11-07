@@ -11,6 +11,18 @@ export const SITE = "https://memolabs.dev";
 export const LAB = "https://lab.memolabs.dev";
 
 export interface Dict {
+  loading: string;
+  professionalCta: string;
+  portfolioLabel: string;
+  sourceCta: string;
+  packageCta: string;
+  selectionTitle: string;
+  selectionIntro: string;
+  selectionEmpty: string;
+  allTitle: (n: number) => string;
+  allIntro: string;
+  catalogUnavailable: string;
+  noScript: string;
   htmlLang: string;
   title: string;
   metaDesc: string;
@@ -53,10 +65,22 @@ export interface Dict {
 }
 
 const fr: Dict = {
+  loading: "Chargement de la sélection…",
+  professionalCta: "Voir les expériences professionnelles",
+  portfolioLabel: "réalisations professionnelles",
+  sourceCta: "Lire le code",
+  packageCta: "Voir le package npm",
+  selectionTitle: "Une sélection pour approfondir",
+  selectionIntro: "Trois travaux indépendants : une bibliothèque d’interface, un nœud de paiement n8n et un prototype de facturation. Le code ou le package est accessible pour chacun.",
+  selectionEmpty: "La sélection est momentanément indisponible. Les expériences professionnelles restent accessibles.",
+  allIntro: "Autres explorations et anciens prototypes. Les liens donnent accès au code source ; ils ne constituent pas une promesse de produit en service.",
+  catalogUnavailable: "Le catalogue ne peut pas être chargé. Vous pouvez consulter mes expériences professionnelles.",
+  noScript: "Le catalogue interactif nécessite JavaScript. Mes expériences professionnelles restent accessibles par le lien ci-dessus.",
+  allTitle: (n) => `Autres explorations et code public (${n})`,
   htmlLang: "fr",
   title: "Memo Labs · Le lab",
   metaDesc:
-    "Memo Labs, le lab. Tous les projets : produits en ligne, prototypes et expérimentations WIP, avec descriptions.",
+    "Memo Labs, le lab. Sélection de projets indépendants, outils et prototypes, avec leur usage et leur code public.",
   ogLocale: "fr_FR",
   navHome: "Accueil",
   navWork: "Travail",
@@ -71,12 +95,12 @@ const fr: Dict = {
   navAria: "Navigation principale",
   navLang: "Langue",
   eyebrow: "Memo Labs · Le lab",
-  h1: "Un terrain",
-  h1accent: "de jeu.",
+  h1: "Projets",
+  h1accent: "indépendants.",
   lede:
-    "Le lab, c'est là où vivent les expérimentations de Memo Labs : prototypes d'agents IA, outils, scripts et POCs. Souvent bruts, parfois utiles, toujours réels. Les produits finis sont sur le {portfolioLink}.",
-  btnLive: "En ligne",
-  btnLab: "Le lab",
+    "Une sélection de travaux indépendants pour explorer des interfaces, des intégrations et des automatisations. Pour voir mes interventions en entreprise, consultez les {portfolioLink}.",
+  btnLive: "Voir les expériences professionnelles",
+  btnLab: "Explorer la sélection",
   footer: "© 2026 Memo Labs · Guillaume Flambard EI",
   legal: "Mentions légales",
   liveTitle: "En ligne",
@@ -99,10 +123,22 @@ const fr: Dict = {
 };
 
 const en: Dict = {
+  loading: "Loading the selection…",
+  professionalCta: "See professional experience",
+  portfolioLabel: "professional work",
+  sourceCta: "Read the source",
+  packageCta: "View the npm package",
+  selectionTitle: "A selection to explore further",
+  selectionIntro: "Three independent projects: an interface library, an n8n payment node and a billing prototype. Each links to its source code or package.",
+  selectionEmpty: "The selection is temporarily unavailable. Professional experience remains accessible.",
+  allIntro: "Other explorations and older prototypes. Links open source code; they do not promise a product in operation.",
+  catalogUnavailable: "The catalog could not be loaded. You can still explore my professional experience.",
+  noScript: "The interactive catalog requires JavaScript. My professional experience remains accessible through the link above.",
+  allTitle: (n) => `Other explorations and public code (${n})`,
   htmlLang: "en",
   title: "Memo Labs · The lab",
   metaDesc:
-    "Memo Labs, the lab. Every project: live products, prototypes and WIP experiments, with descriptions.",
+    "Memo Labs, the lab. A selection of independent projects, tools and prototypes, with their purpose and public code.",
   ogLocale: "en_US",
   navHome: "Home",
   navWork: "Work",
@@ -117,12 +153,12 @@ const en: Dict = {
   navAria: "Primary navigation",
   navLang: "Language",
   eyebrow: "Memo Labs · The lab",
-  h1: "A",
-  h1accent: "playground.",
+  h1: "Independent",
+  h1accent: "projects.",
   lede:
-    "The lab is where Memo Labs experiments live: AI agent prototypes, tools, scripts and POCs. Often rough, sometimes useful, always real. The finished products sit on the {portfolioLink}.",
-  btnLive: "Live",
-  btnLab: "The lab",
+    "A selection of independent work exploring interfaces, integrations and automations. For my contributions within companies, see my {portfolioLink}.",
+  btnLive: "See professional experience",
+  btnLab: "Explore the selection",
   footer: "© 2026 Memo Labs · Guillaume Flambard EI",
   legal: "Legal notice",
   liveTitle: "Live",

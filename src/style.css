@@ -192,9 +192,37 @@ h1.h .acc { color: var(--accent); }
 .foot a:hover { color: var(--accent); }
 
 .err { padding: var(--sec-y) 0; color: var(--accent); font-size: 1.2rem; }
+.curated-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.curated-card .cbody { padding: 32px; }
+.curated-card .cbody h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); line-height: 1.2; }
+.curated-card .project-context { flex: none; color: var(--accent); font-size: 14px; }
+.curated-card a, .exploration-list a { display: inline-flex; min-height: 44px; align-items: center; color: var(--accent); text-underline-offset: 4px; }
+.catalog-explorations > summary { cursor: pointer; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: clamp(1.4rem, 3vw, 2rem); }
+.catalog-explorations > div > p { max-width: 64ch; color: var(--muted); font-size: 17px; }
+.exploration-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
+.exploration-list li { padding: 24px 0; border-top: 1px solid var(--line); min-width: 0; }
+.exploration-list h3 { margin: 0; font-size: 1.3rem; overflow-wrap: anywhere; }
+.exploration-list p { font-size: 16px; color: var(--muted); max-width: 60ch; }
+@media (max-width: 800px) { .curated-grid, .exploration-list { grid-template-columns: 1fr; } }
+@media (pointer: coarse) {
+  .mobile-menu-trigger { min-width: 44px; min-height: 44px; }
+  .nav .logo, .navlinks a, .lang a, .nav .cta, .foot a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .lang { display: flex; align-items: center; white-space: nowrap; }
+  .lang a { justify-content: center; }
+}
 
 /* ── reduced motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .backdrop .topo, .backdrop .leaves { opacity: 1; }
   .backdrop .topo { animation: none; }
+}
+
+/* Keep the purpose and the first choices close together. */
+.hero .wrap { padding-top: clamp(56px, 7vw, 88px); padding-bottom: clamp(48px, 6vw, 72px); }
+h1.h { font-size: clamp(2.8rem, 6.4vw, 5.4rem); }
+
+.curated-card :where(h3, p) { background: transparent; }
+.curated-card h3 { text-transform: uppercase; }
+@media (pointer: coarse) {
+  .hero .txtlink { display: inline-flex; min-height: 44px; align-items: center; }
 }

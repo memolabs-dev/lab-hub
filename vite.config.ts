@@ -52,11 +52,12 @@ function values(locale: Locale): Record<string, string> {
     h1accent: d.h1accent,
     lede: d.lede.replace(
       "{portfolioLink}",
-      `<a class="txtlink" href="${site}/work">portfolio</a>`
+      `<a class="txtlink" href="${site}/work">${d.portfolioLabel}</a>`
     ),
     btnLive: d.btnLive,
     btnLab: d.btnLab,
     legal: d.legal,
+    noScript: d.noScript,
   };
 }
 
