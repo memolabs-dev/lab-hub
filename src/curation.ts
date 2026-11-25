@@ -16,13 +16,6 @@ export const CURATED = [
     context: { fr: "Package communautaire publié sur npm", en: "Community package published on npm" },
     href: "https://www.npmjs.com/package/n8n-nodes-opn", action: "package",
   },
-  {
-    name: "paykit",
-    title: { fr: "Paiements et crédits dans une application", en: "Payments and credits in an application" },
-    description: { fr: "Une exploration de facturation avec Stripe, webhooks et crédits PostgreSQL, avec une interface d’intégration React.", en: "A billing exploration with Stripe, webhooks and PostgreSQL credits, plus a React integration interface." },
-    context: { fr: "Prototype indépendant · accès anticipé", en: "Independent prototype · early access" },
-    href: "https://github.com/guillaume-flambard/paykit", action: "source",
-  },
 ] satisfies { name: string; title: Copy; description: Copy; context: Copy; href: string; action: string }[];
 const HIDDEN = new Set(["portfolio", "lab-hub", "activity-server"]);
 export function publicExplorations(projects: Project[]) {

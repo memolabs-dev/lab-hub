@@ -75,21 +75,6 @@
     }
   },
   {
-    "name": "paykit",
-    "status": "live",
-    "url": "https://paykit.cc",
-    "repo": "https://github.com/guillaume-flambard/paykit",
-    "description": "PayKit — drop-in credits, usage metering & subscriptions for AI apps",
-    "language": "TypeScript",
-    "lab_candidate": false,
-    "visibility": "PUBLIC",
-    "last_push_days": 25,
-    "notes": {
-      "fr": "Crédits, métrage d'usage et abonnements prêts à brancher.",
-      "en": "Drop-in credits, usage metering and subscriptions."
-    }
-  },
-  {
     "name": "perfect-london-massage",
     "status": "live",
     "url": "https://plm.memolabs.dev",
